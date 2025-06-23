@@ -6,7 +6,8 @@
       "Bash(true)",
       "Bash(mkdir:*)",
       "Bash(cp:*)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(rg:*)"
     ],
     "deny": []
   }
