@@ -27,7 +27,7 @@ export default function Home8({
         <div className="container position-relative">
           <div className="row">
             <div className="col-lg-10 offset-lg-1">
-              <div
+              {/* <div
                 className="section-descr-extralarge mb-100 mb-md-60 wow linesAnimIn"
                 data-splitting="lines"
               >
@@ -36,11 +36,11 @@ export default function Home8({
                 creating beautiful digital experiences and products. We are an
                 award winning group specializing in branding, design and
                 engineering. Our mission is to make work meaningful.
-              </div>
+              </div> */}
               {/* Accordion */}
-              <Accordion />
+              {/* <Accordion /> */}
               {/* End Accordion */}
-              <div className="local-scroll text-center">
+              {/* <div className="local-scroll text-center">
                 {onePage ? (
                   <>
                     <a
@@ -86,8 +86,8 @@ export default function Home8({
                     </Link>
                   </>
                 )}
-              </div>
-              <div
+              </div> */}
+              {/* <div
                 className="page-section scrollSpysection  pb-0"
                 id="established"
               >
@@ -119,7 +119,7 @@ export default function Home8({
                     />
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -307,7 +307,7 @@ export default function Home8({
                       data-link-animate="y"
                     >
                       <span className="link-strong link-strong-unhovered">
-                        See all project{" "}
+                        See all projects{" "}
                         <i
                           className="icon-arrow-right2 size-14"
                           aria-hidden="true"
@@ -317,7 +317,7 @@ export default function Home8({
                         className="link-strong link-strong-hovered"
                         aria-hidden="true"
                       >
-                        See all project{" "}
+                        See all projects{" "}
                         <i
                           className="icon-arrow-right2 size-14"
                           aria-hidden="true"

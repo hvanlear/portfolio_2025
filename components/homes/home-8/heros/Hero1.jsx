@@ -1,21 +1,33 @@
-import React from "react";
+"use client"
+
+import React, { useRef, useEffect } from "react";
 import Image from "next/image";
+import { VFX } from "@vfx-js/core";
+
 export default function Hero1() {
+
+ const imgRef = useRef(null);
+
+   useEffect(() => {
+    if (imgRef.current) {
+      const vfx = new VFX();
+      vfx.add(imgRef.current, { shader: "rgbShift", overflow: 0 });
+    }
+  }, []);
+ 
   return (
     <div className="container min-height-100vh d-flex align-items-center pt-100 pb-100 pt-sm-120 pb-sm-120 ">
       {/* Home Section Content */}
       <div className="home-content pb-sm-60 text-start position-relative">
         <h1 className="hs-title-5 font-alt overflow-hidden mb-30 mb-sm-20">
           <span className="d-block text-center wow fadeRotateIn">
-            <Image
-              className="hs-image-2 wow fadeInRight"
+            <span
+            className="hs-title-4"
+            
               data-wow-delay="0.8s"
               data-wow-offset={0}
-              src="/assets/images/demo-modern/hs-image-2.jpg"
-              width={208}
-              height={208}
               alt="Image Description"
-            />{" "}
+            >👋</span>{" "}
             Hello
           </span>
           <span

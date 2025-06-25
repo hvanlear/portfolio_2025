@@ -111,7 +111,7 @@ export default function ModernBlogPageDark() {
                           className="post-prev-2 col-md-6 col-lg-4 mt-50 mt-sm-30"
                         >
                           <div className="post-prev-2-img">
-                            <Link href={`/modern-blog-single/${elm.id}`}>
+                            <Link href={`/blog-single/${elm.id}`}>
                               <Image
                                 src={elm.imgSrc}
                                 width={700}
@@ -121,7 +121,7 @@ export default function ModernBlogPageDark() {
                             </Link>
                           </div>
                           <h3 className="post-prev-2-title">
-                            <Link href={`/modern-blog-single/${elm.id}`}>
+                            <Link href={`/blog-single/${elm.id}`}>
                               {elm.title}
                             </Link>
                           </h3>

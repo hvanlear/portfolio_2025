@@ -25,14 +25,14 @@ export default function Header8({ links }) {
           <Image
             src="/assets/images/demo-modern/logo-dark.svg"
             alt="Your Company Logo"
-            width={84}
+            width={54}
             height={33}
             className="light-mode-logo"
           />
           <Image
             src="/assets/images/demo-modern/logo-white.svg"
             alt="Your Company Logo"
-            width={84}
+            width={54}
             height={33}
             className="dark-mode-logo"
           />
@@ -52,12 +52,7 @@ export default function Header8({ links }) {
       <div className="inner-nav desktop-nav">
         <ul className="clearlist scroll-nav local-scroll justify-content-end scrollspyLinks">
           <Nav links={links} animateY />
-          <li className="desktop-nav-display">
-            <div className="vr" />
-          </li>
-          {/* Languages */}
-          <LanguageSelect />
-          {/* End Languages */}
+       
           <li>
             {links[0].href.includes("/") ? (
               <Link
