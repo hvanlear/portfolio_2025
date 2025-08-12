@@ -1,11 +1,11 @@
 export const portfolioItems = [
   {
     id: 1,
-    href: "strong-portfolio-single.html",
-    imgSrc: "/assets/images/demo-strong/portfolio/1.jpg",
-    imgAlt: "Image Description",
-    title: "Rise of Design",
-    descr: "Branding, UI/UX Design",
+    href: "/portfolio-single/bpmn-modeler",
+    imgSrc: "/assets/images/portfolio/bpmn-modeler-thumb.jpg",
+    imgAlt: "BPMN Modeler Interface",
+    title: "BPMN Modeler",
+    descr: "UI Design, Product Design",
   },
   {
     id: 2,
@@ -430,10 +430,10 @@ export const portfolios7 = [
 
 export const portfolios8 = [
   {
-    id: 48,
-    imageSrc: "/assets/images/demo-modern/portfolio/1.jpg",
-    title: "Medium Scene",
-    categories: "Branding, Design",
+    id: "bpmn-modeler",
+    imageSrc: "/assets/images/portfolio/bpmn-modeler-hero.jpg",
+    title: "BPMN Modeler",
+    categories: "UI Design, Product Design",
     align: "text-center",
   },
   {
@@ -794,6 +794,48 @@ export const portfolios13 = [
   },
 ];
 
+// Detailed portfolio projects
+export const detailedProjects = [
+  {
+    id: "bpmn-modeler",
+    title: "BPMN Modeler",
+    subtitle: "Redesigned and optimized a web-based canvas tool for intuitive process modeling and creation, enhancing user experience and productivity.",
+    role: "UI/Product Designer",
+    categories: ["UI Design", "Product Design"],
+    technologies: ["Figma"],
+    duration: "2023",
+    client: "ProcessMaker",
+    heroImage: "/assets/images/portfolio/bpmn-modeler-hero.jpg",
+    thumbnailImage: "/assets/images/portfolio/bpmn-modeler-thumb.jpg",
+    images: [
+      "/assets/images/portfolio/bpmn-modeler-before.jpg",
+      "/assets/images/portfolio/bpmn-modeler-after.jpg",
+      "/assets/images/portfolio/bpmn-modeler-wireframes.jpg",
+      "/assets/images/portfolio/bpmn-modeler-menu-rail.jpg"
+    ],
+    challenge: "Addressed challenges with a cumbersome interface and limited maneuverability. The existing tool had usability hurdles that hindered user productivity and created friction in the process modeling workflow.",
+    solution: "Transformed the user experience by implementing a modern drag-and-drop primary menu, comprehensive item repository with search functionality, smart alignment features, and contextual tool display. Added customizable pinning feature and expandable architecture for future connectors.",
+    features: [
+      "Modern drag-and-drop primary menu",
+      "Comprehensive item repository with search functionality", 
+      "Smart alignment features",
+      "Contextual tool display",
+      "Customizable pinning feature",
+      "Expandable architecture for future connectors"
+    ],
+    outcomes: [
+      "Larger canvas space for complex diagrams",
+      "Simplified menu navigation",
+      "Improved user workflow efficiency", 
+      "Positive user feedback on usability",
+      "Enhanced productivity for process modeling"
+    ],
+    description: "I redesigned a web-based BPMN modeling tool to address significant usability challenges. The project focused on transforming a cumbersome interface into an intuitive, efficient workspace that supports complex process modeling. Through careful analysis of user workflows and technical constraints, I developed solutions that dramatically improved the user experience while maintaining the tool's robust functionality.",
+    nextProject: null,
+    prevProject: null
+  }
+];
+
 export const allPortfolios = [
   ...portfolioItems,
   ...portfolios1,
@@ -809,4 +851,5 @@ export const allPortfolios = [
   ...portfolios11,
   ...portfolios12,
   ...portfolios13,
+  ...detailedProjects,
 ];

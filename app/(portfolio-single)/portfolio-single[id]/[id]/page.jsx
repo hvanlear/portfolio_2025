@@ -6,7 +6,7 @@ import Link from "next/link";
 import { modernMultipage } from "@/data/menu";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import { allPortfolios } from "@/data/portfolio";
+import { allPortfolios, detailedProjects } from "@/data/portfolio";
 export const metadata = {
   title:
     "Modern Portfolio Single|| Resonance &mdash; One & Multi Page React Nextjs Creative Template",
@@ -15,8 +15,12 @@ export const metadata = {
 };
 export default async function ModernPortfolioSinglePage(props) {
   const params = await props.params;
-  const portfolioItem =
-    allPortfolios.filter((elm) => elm.id == params.id)[0] || allPortfolios[0];
+  
+  // First check if this is a detailed project
+  const detailedProject = detailedProjects.find((elm) => elm.id === params.id);
+  const portfolioItem = detailedProject || 
+    allPortfolios.filter((elm) => elm.id == params.id)[0] || 
+    allPortfolios[0];
   return (
     <>
       <div className="theme-modern">
@@ -29,7 +33,7 @@ export default async function ModernPortfolioSinglePage(props) {
               className="page-section pt-90 pb-90 pb-xs-40 bg-dark-alpha-60 parallax-5 light-content"
               style={{
                 backgroundImage:
-                  "url(/assets/images/demo-modern/section-bg-8.jpg)",
+                  `url(${detailedProject?.heroImage || "https://images.unsplash.com/photo-1579548122080-c35fd6820ecb"})`,
               }}
               id="home"
             >
@@ -90,34 +94,53 @@ export default async function ModernPortfolioSinglePage(props) {
                   {/* Work Gallery */}
                   <div className="work-full-media mb-80 mb-sm-40 wow fadeInUp">
                     <div className="clearlist work-full-slider owl-carousel light-content">
-                      <div>
-                        <Image
-                          src="/assets/images/demo-brutalist/portfolio/project-single-2.jpg"
-                          alt="Image Description"
-                          width={1700}
-                          height={900}
-                        />
-                      </div>
-                      <div>
-                        <Image
-                          className="lazyOwl"
-                          src="/assets/images/placeholder.png"
-                          data-src="/assets/images/demo-brutalist/portfolio/project-single-1.jpg"
-                          alt="Image Description"
-                          width={1700}
-                          height={900}
-                        />
-                      </div>
-                      <div>
-                        <Image
-                          className="lazyOwl"
-                          src="/assets/images/placeholder.png"
-                          data-src="/assets/images/demo-brutalist/portfolio/project-single-3.jpg"
-                          alt="Image Description"
-                          width={1700}
-                          height={900}
-                        />
-                      </div>
+                      {detailedProject && detailedProject.images ? (
+                        // Use detailed project images with proper lazy loading pattern
+                        detailedProject.images.map((imageSrc, index) => (
+                          <div key={index}>
+                            <Image
+                              className={index === 0 ? "" : "lazyOwl"}
+                              src={index === 0 ? imageSrc : "/assets/images/placeholder.png"}
+                              data-src={index === 0 ? undefined : imageSrc}
+                              alt={`${detailedProject.title} - Image ${index + 1}`}
+                              width={1700}
+                              height={900}
+                            />
+                          </div>
+                        ))
+                      ) : (
+                        // Fallback for other portfolio items
+                        <>
+                          <div>
+                            <Image
+                              src="/assets/images/demo-brutalist/portfolio/project-single-2.jpg"
+                              alt="Image Description"
+                              width={1700}
+                              height={900}
+                            />
+                          </div>
+                          <div>
+                            <Image
+                              className="lazyOwl"
+                              src="/assets/images/placeholder.png"
+                              data-src="/assets/images/demo-brutalist/portfolio/project-single-1.jpg"
+                              alt="Image Description"
+                              width={1700}
+                              height={900}
+                            />
+                          </div>
+                          <div>
+                            <Image
+                              className="lazyOwl"
+                              src="/assets/images/placeholder.png"
+                              data-src="/assets/images/demo-brutalist/portfolio/project-single-3.jpg"
+                              alt="Image Description"
+                              width={1700}
+                              height={900}
+                            />
+                          </div>
+                        </>
+                      )}
                     </div>
                   </div>
                   {/* End Work Gallery */}
@@ -129,14 +152,25 @@ export default async function ModernPortfolioSinglePage(props) {
                         <div className="col-sm-4">
                           <b>Date:</b>
                         </div>
-                        <div className="col-sm-8">May 1th, 2023</div>
+                        <div className="col-sm-8">{detailedProject?.duration || "2023"}</div>
                       </div>
                       <hr className="mb-20" />
+                      {detailedProject?.client && (
+                        <>
+                          <div className="row">
+                            <div className="col-sm-4">
+                              <b>Client:</b>
+                            </div>
+                            <div className="col-sm-8">{detailedProject.client}</div>
+                          </div>
+                          <hr className="mb-20" />
+                        </>
+                      )}
                       <div className="row">
                         <div className="col-sm-4">
-                          <b>Client:</b>
+                          <b>Role:</b>
                         </div>
-                        <div className="col-sm-8">Envato Users</div>
+                        <div className="col-sm-8">{detailedProject?.role || "Designer"}</div>
                       </div>
                       <hr className="mb-20" />
                       <div className="row">
@@ -144,18 +178,28 @@ export default async function ModernPortfolioSinglePage(props) {
                           <b>Services:</b>
                         </div>
                         <div className="col-sm-8">
-                          Branding, UI/UX Design, Front-end Development,
-                          Back-end Development
+                          {detailedProject?.categories?.join(", ") || "Branding, UI/UX Design, Front-end Development, Back-end Development"}
                         </div>
                       </div>
                       <hr className="mb-20" />
+                      {detailedProject?.technologies && (
+                        <>
+                          <div className="row">
+                            <div className="col-sm-4">
+                              <b>Technologies:</b>
+                            </div>
+                            <div className="col-sm-8">{detailedProject.technologies.join(", ")}</div>
+                          </div>
+                          <hr className="mb-20" />
+                        </>
+                      )}
                     </div>
                     {/* End Project Details */}
                     {/* Project Description */}
                     <div className="col-md-6">
                       <h2 className="h3 mb-20">Description</h2>
                       <p className="mb-0">
-                        Lorem ipsum dolor sit amet conseur adipisci inerene
+                        {detailedProject?.description || `Lorem ipsum dolor sit amet conseur adipisci inerene
                         maximus ligula sempe metuse pelente mattis. Maecenas
                         volutpat, diam eni sagittis quam porta quam. Sed id
                         dolor consectetur fermentum volutpat accumsan purus
@@ -163,7 +207,7 @@ export default async function ModernPortfolioSinglePage(props) {
                         libero. Etiam sit amet fringilla lacus susantebe sit
                         ullamcorper pulvinar neque porttitor. Integere lectus.
                         Praesent sede nisi eleifend fermum orci amet, iaculis
-                        libero. Donec vel ultricies purus quam.
+                        libero. Donec vel ultricies purus quam.`}
                       </p>
                     </div>
                     {/* End Project Description */}

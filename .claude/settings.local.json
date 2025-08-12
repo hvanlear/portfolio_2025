@@ -8,7 +8,8 @@
       "Bash(cp:*)",
       "Bash(npm run build:*)",
       "Bash(rg:*)",
-      "Bash(mv:*)"
+      "Bash(mv:*)",
+      "WebFetch(domain:www.huntervl.com)"
     ],
     "deny": []
   }
