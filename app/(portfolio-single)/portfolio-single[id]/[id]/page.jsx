@@ -96,18 +96,25 @@ export default async function ModernPortfolioSinglePage(props) {
                     <div className="clearlist work-full-slider owl-carousel light-content">
                       {detailedProject && detailedProject.images ? (
                         // Use detailed project images with proper lazy loading pattern
-                        detailedProject.images.map((imageSrc, index) => (
-                          <div key={index}>
-                            <Image
-                              className={index === 0 ? "" : "lazyOwl"}
-                              src={index === 0 ? imageSrc : "/assets/images/placeholder.png"}
-                              data-src={index === 0 ? undefined : imageSrc}
-                              alt={`${detailedProject.title} - Image ${index + 1}`}
-                              width={1700}
-                              height={900}
-                            />
-                          </div>
-                        ))
+                        // For BPMN project, prioritize main project image first
+                        (() => {
+                          const images = detailedProject.id === "bpmn-modeler" 
+                            ? ["/assets/images/portfolio/bpmn-modeler-main.png", ...detailedProject.images.slice(1, 3)]
+                            : detailedProject.images.slice(0, 3);
+                          
+                          return images.map((imageSrc, index) => (
+                            <div key={index}>
+                              <Image
+                                className={index === 0 ? "" : "lazyOwl"}
+                                src={index === 0 ? imageSrc : "/assets/images/placeholder.png"}
+                                data-src={index === 0 ? undefined : imageSrc}
+                                alt={`${detailedProject.title} - Image ${index + 1}`}
+                                width={1700}
+                                height={900}
+                              />
+                            </div>
+                          ));
+                        })()
                       ) : (
                         // Fallback for other portfolio items
                         <>
@@ -212,6 +219,132 @@ export default async function ModernPortfolioSinglePage(props) {
                     </div>
                     {/* End Project Description */}
                   </div>
+                  
+                  {/* Enhanced Project Sections for Detailed Projects */}
+                  {detailedProject && (
+                    <>
+                      {/* Challenge Section */}
+                      <div className="row mt-80 mt-md-60 mt-sm-40">
+                        <div className="col-12">
+                          <h2 className="h3 mb-20">The Challenge</h2>
+                          <p className="mb-20">{detailedProject.challenge}</p>
+                        </div>
+                      </div>
+
+                      {/* Solution Section */}
+                      <div className="row mt-80 mt-md-60 mt-sm-40">
+                        <div className="col-12">
+                          <h2 className="h3 mb-20">Solution & Approach</h2>
+                          <p className="mb-40">{detailedProject.solution}</p>
+                        </div>
+                      </div>
+
+                      {/* Before/After Comparison - Only for BPMN project */}
+                      {detailedProject.id === "bpmn-modeler" && (
+                        <div className="row mt-60 mt-md-40 mt-sm-30">
+                          <div className="col-md-6 mb-sm-30">
+                            <div className="text-center">
+                              <h4 className="h5 mb-20">Before: Limited Interface</h4>
+                              <Image
+                                src="/assets/images/portfolio/bpmn-modeler-before.png"
+                                width={500}
+                                height={300}
+                                alt="BPMN Modeler Before Redesign"
+                                style={{ objectFit: "cover", border: "1px solid #ddd", width: "100%", height: "300px" }}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-md-6">
+                            <div className="text-center">
+                              <h4 className="h5 mb-20">After: Optimized Workspace</h4>
+                              <Image
+                                src="/assets/images/portfolio/bpmn-modeler-after.png"
+                                width={500}
+                                height={300}
+                                alt="BPMN Modeler After Redesign"
+                                style={{ objectFit: "cover", border: "1px solid #ddd", width: "100%", height: "300px" }}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Features Section */}
+                      {detailedProject.features && (
+                        <div className="row mt-80 mt-md-60 mt-sm-40">
+                          <div className="col-md-6 mb-sm-40">
+                            <h2 className="h3 mb-20">Key Features</h2>
+                            <ul className="text-gray">
+                              {detailedProject.features.map((feature, index) => (
+                                <li key={index} className="mb-10">{feature}</li>
+                              ))}
+                            </ul>
+                          </div>
+                          {detailedProject.outcomes && (
+                            <div className="col-md-6">
+                              <h2 className="h3 mb-20">Outcomes & Impact</h2>
+                              <ul className="text-gray">
+                                {detailedProject.outcomes.map((outcome, index) => (
+                                  <li key={index} className="mb-10">{outcome}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      {/* Menu Components Showcase - Only for BPMN project */}
+                      {detailedProject.id === "bpmn-modeler" && (
+                        <div className="row mt-60 mt-md-40 mt-sm-30">
+                          <div className="col-12">
+                            <h2 className="h3 mb-30 text-center">Menu System Redesign</h2>
+                          </div>
+                          <div className="col-md-4 mb-sm-30">
+                            <div className="text-center">
+                              <h4 className="h6 mb-15">Control Rail</h4>
+                              <div style={{ height: "250px", display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid #ddd", backgroundColor: "#f8f9fa" }}>
+                                <Image
+                                  src="/assets/images/portfolio/bpmn-menu-control.png"
+                                  width={280}
+                                  height={240}
+                                  alt="BPMN Control Menu Rail"
+                                  style={{ objectFit: "contain", maxWidth: "100%", maxHeight: "100%" }}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div className="col-md-4 mb-sm-30">
+                            <div className="text-center">
+                              <h4 className="h6 mb-15">Explorer Rail</h4>
+                              <div style={{ height: "250px", display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid #ddd", backgroundColor: "#f8f9fa" }}>
+                                <Image
+                                  src="/assets/images/portfolio/bpmn-menu-explorer.png"
+                                  width={280}
+                                  height={240}
+                                  alt="BPMN Explorer Menu Rail"
+                                  style={{ objectFit: "contain", maxWidth: "100%", maxHeight: "100%" }}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div className="col-md-4 mb-sm-30">
+                            <div className="text-center">
+                              <h4 className="h6 mb-15">Crown Rail</h4>
+                              <div style={{ height: "250px", display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid #ddd", backgroundColor: "#f8f9fa" }}>
+                                <Image
+                                  src="/assets/images/portfolio/bpmn-menu-crown.png"
+                                  width={280}
+                                  height={240}
+                                  alt="BPMN Crown Menu Rail"
+                                  style={{ objectFit: "contain", maxWidth: "100%", maxHeight: "100%" }}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </>
+                  )}
                 </div>
               </section>
               {/* End Section */}
