@@ -1,0 +1,477 @@
+/* Dashboard Component Styles */
+/* Clean, minimal design to match site aesthetic */
+
+/* Main Dashboard Container with Variables */
+.dashboard {
+  /* Component-scoped CSS Variables */
+  --dashboard-bg: #ffffff;
+  --dashboard-border: #000000;
+  --dashboard-text: #000000;
+  --dashboard-text-muted: #666666;
+  --dashboard-radius: 0px;
+  --dashboard-spacing-xs: 4px;
+  --dashboard-spacing-sm: 8px;
+  --dashboard-spacing-md: 12px;
+  --dashboard-spacing-lg: 16px;
+  
+  /* Layout styles */
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 1000;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.dashboard.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dashboard.floating {
+  /* Default positioning for floating widget */
+}
+
+.dashboard.integrated {
+  position: relative;
+  top: auto;
+  right: auto;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Compact View - Always Visible */
+.compactView {
+  display: flex;
+  align-items: center;
+  gap: var(--dashboard-spacing-sm);
+  background: var(--dashboard-bg);
+  border: 2px solid var(--dashboard-border);
+  border-radius: var(--dashboard-radius);
+  padding: var(--dashboard-spacing-sm);
+}
+
+/* Expanded View - Slides Down */
+.expandedView {
+  margin-top: var(--dashboard-spacing-sm);
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.3s ease 0.1s;
+}
+
+.expandedView.expanded {
+  max-height: 600px;
+  opacity: 1;
+}
+
+.cardGrid {
+  display: grid;
+  gap: var(--dashboard-spacing-sm);
+  grid-template-columns: 1fr;
+}
+
+/* Integrated Grid Layout */
+.integratedGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  height: 100%;
+  width: 100%;
+}
+
+.miniGithub,
+.miniKanban {
+  display: flex;
+  align-items: center;
+  gap: var(--dashboard-spacing-sm);
+  background: var(--dashboard-bg);
+  border: 2px solid var(--dashboard-border);
+  border-radius: var(--dashboard-radius);
+  padding: var(--dashboard-spacing-sm);
+  transition: none;
+}
+
+.miniGithub:hover,
+.miniKanban:hover {
+  transform: none;
+}
+
+.miniText {
+  flex: 1;
+  min-width: 0;
+}
+
+.miniTitle {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--dashboard-text);
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.miniSubtitle {
+  font-size: 9px;
+  color: var(--dashboard-text-muted);
+  margin-top: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Expand Button */
+.expandButton {
+  background: none;
+  border: none;
+  color: var(--dashboard-text-muted);
+  cursor: pointer;
+  padding: var(--dashboard-spacing-xs);
+  border-radius: var(--dashboard-spacing-xs);
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.expandButton:hover {
+  color: var(--dashboard-text);
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.expandIcon {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.expandIcon.rotated {
+  transform: rotate(180deg);
+}
+
+/* Base Card Styles */
+.card {
+  background: var(--dashboard-bg);
+  border: 2px solid var(--dashboard-border);
+  border-radius: var(--dashboard-radius);
+  padding: var(--dashboard-spacing-lg);
+  transition: none;
+}
+
+.card:hover {
+  transform: none;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--dashboard-spacing-sm);
+  margin-bottom: var(--dashboard-spacing-lg);
+}
+
+.cardHeader h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--dashboard-text);
+}
+
+/* Time Card Styles */
+.timeCardCompact {
+  padding: var(--dashboard-spacing-sm);
+  min-width: 80px;
+}
+
+.timeDisplay {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--dashboard-text);
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.timeCardCompact .timeDisplay {
+  font-size: 12px;
+}
+
+.dateDisplay {
+  font-size: 9px;
+  color: var(--dashboard-text-muted);
+  margin-top: var(--dashboard-spacing-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.timezone {
+  font-size: 12px;
+  color: var(--dashboard-text-muted);
+  background: rgba(0, 0, 0, 0.05);
+  padding: 2px 6px;
+  border-radius: var(--dashboard-spacing-xs);
+}
+
+/* Weather Card Styles */
+.weatherCardCompact {
+  padding: var(--dashboard-spacing-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--dashboard-spacing-sm);
+}
+
+.weatherIcon {
+  font-size: 20px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.weatherCardCompact .weatherIcon {
+  font-size: 16px;
+}
+
+.weatherCardCompact .tempDisplay {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--dashboard-text);
+}
+
+.weatherContent {
+  display: flex;
+  align-items: center;
+  gap: var(--dashboard-spacing-lg);
+}
+
+.weatherInfo {
+  flex: 1;
+}
+
+.condition {
+  font-size: 12px;
+  color: var(--dashboard-text-muted);
+  margin-top: var(--dashboard-spacing-xs);
+}
+
+.feelsLike {
+  font-size: 11px;
+  color: var(--dashboard-text-muted);
+  margin-top: 2px;
+}
+
+.location {
+  font-size: 12px;
+  color: var(--dashboard-text-muted);
+}
+
+/* GitHub Card Styles */
+.githubCard {
+  min-width: 280px;
+}
+
+.githubIcon {
+  color: var(--dashboard-text-muted);
+}
+
+.commitInfo {
+  gap: var(--dashboard-spacing-sm);
+}
+
+.commitMessage {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--dashboard-text);
+  margin-bottom: var(--dashboard-spacing-sm);
+}
+
+.commitMeta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--dashboard-spacing-xs);
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: var(--dashboard-spacing-sm);
+  font-size: 12px;
+  color: var(--dashboard-text-muted);
+}
+
+.avatar {
+  border-radius: 50%;
+  border: 1px solid var(--dashboard-border);
+}
+
+.repoInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--dashboard-spacing-sm);
+  font-size: 12px;
+}
+
+.repo {
+  color: var(--dashboard-text);
+  font-weight: 500;
+}
+
+.branch {
+  color: var(--dashboard-text-muted);
+  background: rgba(0, 0, 0, 0.05);
+  padding: 2px 6px;
+  border-radius: var(--dashboard-spacing-xs);
+  font-size: 11px;
+}
+
+.timestamp {
+  font-size: 11px;
+  color: var(--dashboard-text-muted);
+}
+
+/* Kanban Card Styles */
+.kanbanCard {
+  min-width: 320px;
+}
+
+.kanbanIcon {
+  color: var(--dashboard-text-muted);
+}
+
+.progressSummary {
+  margin-bottom: var(--dashboard-spacing-md);
+}
+
+.progressText {
+  font-size: 12px;
+  color: var(--dashboard-text-muted);
+  margin-bottom: var(--dashboard-spacing-xs);
+}
+
+.progressBar {
+  height: 4px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: var(--dashboard-spacing-xs);
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--dashboard-text);
+  transition: width 0.3s ease;
+}
+
+.progressPercent {
+  font-size: 11px;
+  color: var(--dashboard-text-muted);
+  text-align: right;
+}
+
+.kanbanColumns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--dashboard-spacing-sm);
+}
+
+.column {
+  min-width: 0; /* Allows text truncation */
+}
+
+.columnTitle {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--dashboard-text-muted);
+  margin: 0 0 var(--dashboard-spacing-sm) 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.taskCard {
+  display: flex;
+  align-items: center;
+  gap: var(--dashboard-spacing-sm);
+  padding: var(--dashboard-spacing-sm);
+  border-radius: var(--dashboard-spacing-xs);
+  margin-bottom: var(--dashboard-spacing-xs);
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.taskCard:hover {
+  transform: translateY(-1px);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.completedTask {
+  opacity: 0.7;
+}
+
+.completedTask .taskTitle {
+  text-decoration: line-through;
+}
+
+.priorityDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.taskTitle {
+  font-size: 11px;
+  color: var(--dashboard-text);
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Loading State */
+.loadingState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 60px;
+  background: var(--dashboard-bg);
+  border: 2px solid var(--dashboard-border);
+  border-radius: var(--dashboard-radius);
+  padding: var(--dashboard-spacing-md);
+}
+
+.loadingText {
+  font-size: 12px;
+  color: var(--dashboard-text-muted);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard {
+    top: var(--dashboard-spacing-md);
+    right: var(--dashboard-spacing-md);
+    left: var(--dashboard-spacing-md);
+    position: fixed;
+  }
+  
+  .cardGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .kanbanColumns {
+    grid-template-columns: 1fr;
+  }
+  
+  .githubCard,
+  .kanbanCard {
+    min-width: auto;
+  }
+}

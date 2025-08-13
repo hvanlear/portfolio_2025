@@ -2,6 +2,9 @@ import Footer2 from "@/components/footers/Footer2";
 import Header8 from "@/components/headers/Header8";
 import RelatedProject3 from "@/components/portfolio/relatedProjects/RelatedProject3";
 import ParallaxContainer from "@/components/common/ParallaxContainer";
+import ImageModal from "@/components/common/ImageModal";
+import ClickableImage from "@/components/common/ClickableImage";
+import AnimatedText from "@/components/common/AnimatedText";
 import Link from "next/link";
 import { modernMultipage } from "@/data/menu";
 import dynamic from "next/dynamic";
@@ -154,7 +157,14 @@ export default async function ModernPortfolioSinglePage(props) {
                   <div className="row">
                     {/* Project Details */}
                     <div className="col-md-6 mb-sm-40">
-                      <h2 className="h3 mb-20">Project Details</h2>
+                      <h2 className="h3 mb-20">
+                        <span
+                          className="wow charsAnimInLong"
+                          data-splitting="chars"
+                        >
+                          <AnimatedText text="Project Details" />
+                        </span>
+                      </h2>
                       <div className="row">
                         <div className="col-sm-4">
                           <b>Date:</b>
@@ -204,7 +214,14 @@ export default async function ModernPortfolioSinglePage(props) {
                     {/* End Project Details */}
                     {/* Project Description */}
                     <div className="col-md-6">
-                      <h2 className="h3 mb-20">Description</h2>
+                      <h2 className="h3 mb-20">
+                        <span
+                          className="wow charsAnimInLong"
+                          data-splitting="chars"
+                        >
+                          <AnimatedText text="Description" />
+                        </span>
+                      </h2>
                       <p className="mb-0">
                         {detailedProject?.description || `Lorem ipsum dolor sit amet conseur adipisci inerene
                         maximus ligula sempe metuse pelente mattis. Maecenas
@@ -226,7 +243,14 @@ export default async function ModernPortfolioSinglePage(props) {
                       {/* Challenge Section */}
                       <div className="row mt-80 mt-md-60 mt-sm-40">
                         <div className="col-12">
-                          <h2 className="h3 mb-20">The Challenge</h2>
+                          <h2 className="h3 mb-20">
+                            <span
+                              className="wow charsAnimInLong"
+                              data-splitting="chars"
+                            >
+                              <AnimatedText text="The Challenge" />
+                            </span>
+                          </h2>
                           <p className="mb-20">{detailedProject.challenge}</p>
                         </div>
                       </div>
@@ -234,7 +258,14 @@ export default async function ModernPortfolioSinglePage(props) {
                       {/* Solution Section */}
                       <div className="row mt-80 mt-md-60 mt-sm-40">
                         <div className="col-12">
-                          <h2 className="h3 mb-20">Solution & Approach</h2>
+                          <h2 className="h3 mb-20">
+                            <span
+                              className="wow charsAnimInLong"
+                              data-splitting="chars"
+                            >
+                              <AnimatedText text="Solution & Approach" />
+                            </span>
+                          </h2>
                           <p className="mb-40">{detailedProject.solution}</p>
                         </div>
                       </div>
@@ -245,24 +276,26 @@ export default async function ModernPortfolioSinglePage(props) {
                           <div className="col-md-6 mb-sm-30">
                             <div className="text-center">
                               <h4 className="h5 mb-20">Before: Limited Interface</h4>
-                              <Image
+                              <ClickableImage
                                 src="/assets/images/portfolio/bpmn-modeler-before.png"
                                 width={500}
                                 height={300}
                                 alt="BPMN Modeler Before Redesign"
-                                style={{ objectFit: "cover", border: "1px solid #ddd", width: "100%", height: "300px" }}
+                                modalId="beforeModal"
+                                style={{ objectFit: "cover", border: "1px solid #ddd", width: "100%", height: "300px", borderRadius: "4px" }}
                               />
                             </div>
                           </div>
                           <div className="col-md-6">
                             <div className="text-center">
                               <h4 className="h5 mb-20">After: Optimized Workspace</h4>
-                              <Image
+                              <ClickableImage
                                 src="/assets/images/portfolio/bpmn-modeler-after.png"
                                 width={500}
                                 height={300}
                                 alt="BPMN Modeler After Redesign"
-                                style={{ objectFit: "cover", border: "1px solid #ddd", width: "100%", height: "300px" }}
+                                modalId="afterModal"
+                                style={{ objectFit: "cover", border: "1px solid #ddd", width: "100%", height: "300px", borderRadius: "4px" }}
                               />
                             </div>
                           </div>
@@ -273,7 +306,14 @@ export default async function ModernPortfolioSinglePage(props) {
                       {detailedProject.features && (
                         <div className="row mt-80 mt-md-60 mt-sm-40">
                           <div className="col-md-6 mb-sm-40">
-                            <h2 className="h3 mb-20">Key Features</h2>
+                            <h2 className="h3 mb-20">
+                              <span
+                                className="wow charsAnimInLong"
+                                data-splitting="chars"
+                              >
+                                <AnimatedText text="Key Features" />
+                              </span>
+                            </h2>
                             <ul className="text-gray">
                               {detailedProject.features.map((feature, index) => (
                                 <li key={index} className="mb-10">{feature}</li>
@@ -282,7 +322,14 @@ export default async function ModernPortfolioSinglePage(props) {
                           </div>
                           {detailedProject.outcomes && (
                             <div className="col-md-6">
-                              <h2 className="h3 mb-20">Outcomes & Impact</h2>
+                              <h2 className="h3 mb-20">
+                                <span
+                                  className="wow charsAnimInLong"
+                                  data-splitting="chars"
+                                >
+                                  <AnimatedText text="Outcomes & Impact" />
+                                </span>
+                              </h2>
                               <ul className="text-gray">
                                 {detailedProject.outcomes.map((outcome, index) => (
                                   <li key={index} className="mb-10">{outcome}</li>
@@ -293,55 +340,172 @@ export default async function ModernPortfolioSinglePage(props) {
                         </div>
                       )}
 
-                      {/* Menu Components Showcase - Only for BPMN project */}
+                      {/* Menu System Redesign - Hybrid Approach */}
                       {detailedProject.id === "bpmn-modeler" && (
-                        <div className="row mt-60 mt-md-40 mt-sm-30">
-                          <div className="col-12">
-                            <h2 className="h3 mb-30 text-center">Menu System Redesign</h2>
+                        <>
+                          {/* Problem Context */}
+                          <div className="row mt-80 mt-md-60 mt-sm-40">
+                            <div className="col-12">
+                              <h2 className="h3 mb-20">
+                                <span
+                                  className="wow charsAnimInLong"
+                                  data-splitting="chars"
+                                >
+                                  <AnimatedText text="Menu System Redesign" />
+                                </span>
+                              </h2>
+                              <p className="text-gray mb-40">
+                                The original toolbar was cramped and inefficient, forcing users to hunt for tools and limiting canvas space. 
+                                I redesigned this into a three-rail system that organizes functions logically while maximizing workspace efficiency.
+                              </p>
+                            </div>
                           </div>
-                          <div className="col-md-4 mb-sm-30">
-                            <div className="text-center">
-                              <h4 className="h6 mb-15">Control Rail</h4>
-                              <div style={{ height: "250px", display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid #ddd", backgroundColor: "#f8f9fa" }}>
-                                <Image
+
+                          {/* Control Rail - Image Left */}
+                          <div className="row align-items-center mb-80 mb-md-60 mb-sm-40">
+                            <div className="col-md-7 mb-sm-30">
+                              <div className="text-center">
+                                <ClickableImage
                                   src="/assets/images/portfolio/bpmn-menu-control.png"
-                                  width={280}
-                                  height={240}
+                                  width={700}
+                                  height={400}
                                   alt="BPMN Control Menu Rail"
-                                  style={{ objectFit: "contain", maxWidth: "100%", maxHeight: "100%" }}
+                                  modalId="controlRailModal"
+                                  style={{ 
+                                    objectFit: "contain", 
+                                    width: "100%", 
+                                    height: "auto", 
+                                    maxHeight: "400px", 
+                                    border: "1px solid #e9ecef", 
+                                    borderRadius: "8px" 
+                                  }}
                                 />
                               </div>
                             </div>
+                            <div className="col-md-5">
+                              <h4 className="h5 mb-20">
+                                <span
+                                  className="wow charsAnimInLong"
+                                  data-splitting="chars"
+                                >
+                                  <AnimatedText text="Control Rail" />
+                                </span>
+                              </h4>
+                              <p className="text-gray mb-20">
+                                Replaced the static left-side element list with a sleek floating toolbar at the bottom of the canvas. This smart redesign provides immediate access to commonly used BPMN elements while keeping the full library accessible through an expandable menu.
+                              </p>
+                              <ul className="text-gray">
+                                <li className="mb-10">Floating toolbar design maximizes canvas workspace</li>
+                                <li className="mb-10">Most frequently used elements always visible</li>
+                                <li className="mb-10">Expandable menu for complete BPMN element library</li>
+                                <li className="mb-10">Eliminates need for static sidebar, improving screen utilization</li>
+                              </ul>
+                            </div>
                           </div>
-                          <div className="col-md-4 mb-sm-30">
-                            <div className="text-center">
-                              <h4 className="h6 mb-15">Explorer Rail</h4>
-                              <div style={{ height: "250px", display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid #ddd", backgroundColor: "#f8f9fa" }}>
-                                <Image
+
+                          {/* Explorer Rail - Image Right */}
+                          <div className="row align-items-center mb-80 mb-md-60 mb-sm-40">
+                            <div className="col-md-5 mb-sm-30">
+                              <h4 className="h5 mb-20">
+                                <span
+                                  className="wow charsAnimInLong"
+                                  data-splitting="chars"
+                                >
+                                  <AnimatedText text="Explorer Rail" />
+                                </span>
+                              </h4>
+                              <p className="text-gray mb-20">
+                                Advanced navigation and process exploration tools. This rail helps users navigate complex diagrams and find specific elements quickly through search and hierarchy views.
+                              </p>
+                              <ul className="text-gray">
+                                <li className="mb-10">Powerful search functionality</li>
+                                <li className="mb-10">Process hierarchy navigation</li>
+                                <li className="mb-10">Element library browser</li>
+                                <li className="mb-10">Quick jump navigation</li>
+                              </ul>
+                            </div>
+                            <div className="col-md-7 order-first order-md-last">
+                              <div className="text-center">
+                                <ClickableImage
                                   src="/assets/images/portfolio/bpmn-menu-explorer.png"
-                                  width={280}
-                                  height={240}
+                                  width={700}
+                                  height={400}
                                   alt="BPMN Explorer Menu Rail"
-                                  style={{ objectFit: "contain", maxWidth: "100%", maxHeight: "100%" }}
+                                  modalId="explorerRailModal"
+                                  style={{ 
+                                    objectFit: "contain", 
+                                    width: "100%", 
+                                    height: "auto", 
+                                    maxHeight: "400px", 
+                                    border: "1px solid #e9ecef", 
+                                    borderRadius: "8px" 
+                                  }}
                                 />
                               </div>
                             </div>
                           </div>
-                          <div className="col-md-4 mb-sm-30">
-                            <div className="text-center">
-                              <h4 className="h6 mb-15">Crown Rail</h4>
-                              <div style={{ height: "250px", display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid #ddd", backgroundColor: "#f8f9fa" }}>
-                                <Image
+
+                          {/* Crown Rail - Image Left */}
+                          <div className="row align-items-center">
+                            <div className="col-md-7 mb-sm-30">
+                              <div className="text-center">
+                                <ClickableImage
                                   src="/assets/images/portfolio/bpmn-menu-crown.png"
-                                  width={280}
-                                  height={240}
+                                  width={700}
+                                  height={400}
                                   alt="BPMN Crown Menu Rail"
-                                  style={{ objectFit: "contain", maxWidth: "100%", maxHeight: "100%" }}
+                                  modalId="crownRailModal"
+                                  style={{ 
+                                    objectFit: "contain", 
+                                    width: "100%", 
+                                    height: "auto", 
+                                    maxHeight: "400px", 
+                                    border: "1px solid #e9ecef", 
+                                    borderRadius: "8px" 
+                                  }}
                                 />
                               </div>
                             </div>
+                            <div className="col-md-5">
+                              <h4 className="h5 mb-20">
+                                <span
+                                  className="wow charsAnimInLong"
+                                  data-splitting="chars"
+                                >
+                                  <AnimatedText text="Crown Rail" />
+                                </span>
+                              </h4>
+                              <p className="text-gray mb-20">
+                                Advanced formatting and customization tools. This rail provides power users with sophisticated options for diagram refinement and professional presentation.
+                              </p>
+                              <ul className="text-gray">
+                                <li className="mb-10">Precision alignment tools</li>
+                                <li className="mb-10">Advanced connector options</li>
+                                <li className="mb-10">Custom styling controls</li>
+                                <li className="mb-10">Professional export features</li>
+                              </ul>
+                            </div>
                           </div>
-                        </div>
+
+                          {/* Impact Summary */}
+                          <div className="row mt-40">
+                            <div className="col-12">
+                              <div className="border-top pt-30">
+                                <h4 className="h6 mb-20">Design Impact</h4>
+                                <div className="row">
+                                  <div className="col-md-6">
+                                    <p className="text-gray small mb-15"><strong>Before:</strong> Single cramped toolbar with mixed functions</p>
+                                    <p className="text-gray small mb-15"><strong>After:</strong> Organized rail system with specialized purposes</p>
+                                  </div>
+                                  <div className="col-md-6">
+                                    <p className="text-gray small mb-15"><strong>Result:</strong> 40% larger canvas workspace</p>
+                                    <p className="text-gray small mb-15"><strong>User Feedback:</strong> "Much easier to find tools and stay focused"</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </>
                       )}
                     </>
                   )}
@@ -354,6 +518,63 @@ export default async function ModernPortfolioSinglePage(props) {
             <section className="page-section">
               <RelatedProject3 />
             </section>
+            
+            {/* Reusable Image Modals for BPMN Project */}
+            {detailedProject?.id === "bpmn-modeler" && (
+              <>
+                {/* Before/After Modals */}
+                <ImageModal
+                  modalId="beforeModal"
+                  title="Before: Limited Interface"
+                  imageSrc="/assets/images/portfolio/bpmn-modeler-before.png"
+                  imageAlt="BPMN Modeler Before Redesign - Full Size"
+                  description="Original cramped interface with limited workspace and poor tool organization"
+                  originalWidth={1200}
+                  originalHeight={800}
+                />
+                
+                <ImageModal
+                  modalId="afterModal"
+                  title="After: Optimized Workspace"
+                  imageSrc="/assets/images/portfolio/bpmn-modeler-after.png"
+                  imageAlt="BPMN Modeler After Redesign - Full Size"
+                  description="Redesigned interface with organized rail system and expanded canvas space"
+                  originalWidth={1785}
+                  originalHeight={1104}
+                />
+
+                {/* Menu Rail Modals */}
+                <ImageModal
+                  modalId="controlRailModal"
+                  title="Control Rail - Detail View"
+                  imageSrc="/assets/images/portfolio/bpmn-menu-control.png"
+                  imageAlt="BPMN Control Menu Rail - Full Size"
+                  description="Primary modeling tools and shape creation interface"
+                  originalWidth={1174}
+                  originalHeight={565}
+                />
+                
+                <ImageModal
+                  modalId="explorerRailModal"
+                  title="Explorer Rail - Detail View"
+                  imageSrc="/assets/images/portfolio/bpmn-menu-explorer.png"
+                  imageAlt="BPMN Explorer Menu Rail - Full Size"
+                  description="Navigation and process exploration tools"
+                  originalWidth={1188}
+                  originalHeight={1111}
+                />
+                
+                <ImageModal
+                  modalId="crownRailModal"
+                  title="Crown Rail - Detail View"
+                  imageSrc="/assets/images/portfolio/bpmn-menu-crown.png"
+                  imageAlt="BPMN Crown Menu Rail - Full Size"
+                  description="Advanced formatting and customization tools"
+                  originalWidth={1823}
+                  originalHeight={610}
+                />
+              </>
+            )}
             <>
               {/* Divider */}
               <hr className="mt-0 mb-0" />

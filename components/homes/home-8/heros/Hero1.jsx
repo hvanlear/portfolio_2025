@@ -3,6 +3,7 @@
 import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 import { VFX } from "@vfx-js/core";
+import Dashboard from "@/components/dashboard/Dashboard";
 
 export default function Hero1() {
 
@@ -43,16 +44,19 @@ export default function Hero1() {
             data-wow-offset={0}
           >
             Hunter{" "}
-            <Image
+            <div 
               className="hs-image-3 wow fadeInLeft"
               data-wow-delay="0.8s"
               data-wow-offset={0}
-              src="/assets/images/demo-modern/hs-image-3.jpg"
-              alt="Image Description"
-              width={362}
-              height={208}
-              style={{ height: "fit-content", width: "fit-content" }}
-            />
+              style={{ 
+                width: "362px", 
+                height: "208px", 
+                display: "inline-block",
+                position: "relative"
+              }}
+            >
+              <Dashboard position="integrated" />
+            </div>
           </span>
         </h1>
         <h2
