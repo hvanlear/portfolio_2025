@@ -79,6 +79,7 @@ export const detailedProjects = [
     client: "ProcessMaker",
     heroImage: "/assets/images/portfolio/bpmn-modeler-hero.jpg",
     thumbnailImage: "/assets/images/portfolio/bpmn-modeler-thumb.jpg",
+    figmaUrl: "https://www.figma.com/proto/YOUR_FILE_ID/BPMN-Modeler?node-id=1:2&viewport=0,0,1&scaling=min-zoom",
     images: [
       "/assets/images/portfolio/bpmn-modeler-main.png",
       "/assets/images/portfolio/bpmn-modeler-before.png",

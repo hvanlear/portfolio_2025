@@ -5,6 +5,7 @@ import ParallaxContainer from "@/components/common/ParallaxContainer";
 import ImageModal from "@/components/common/ImageModal";
 import ClickableImage from "@/components/common/ClickableImage";
 import AnimatedText from "@/components/common/AnimatedText";
+import FigmaEmbed from "@/components/common/FigmaEmbed";
 import Link from "next/link";
 import { modernMultipage } from "@/data/menu";
 import dynamic from "next/dynamic";
@@ -236,6 +237,33 @@ export default async function ModernPortfolioSinglePage(props) {
                     </div>
                     {/* End Project Description */}
                   </div>
+                  
+                  {/* Interactive Figma Prototype */}
+                  {detailedProject && detailedProject.figmaUrl && (
+                    <div className="row mt-80 mt-md-60 mt-sm-40">
+                      <div className="col-12">
+                        <h2 className="h3 mb-20">
+                          <span
+                            className="wow charsAnimInLong"
+                            data-splitting="chars"
+                          >
+                            <AnimatedText text="Interactive Prototype" />
+                          </span>
+                        </h2>
+                        <p className="text-gray mb-30">
+                          Explore the interactive design prototype below. You can click through the interface, 
+                          test user flows, and experience the actual design interactions as intended.
+                        </p>
+                        <FigmaEmbed 
+                          figmaUrl={detailedProject.figmaUrl}
+                          title={`${detailedProject.title} Interactive Prototype`}
+                          height="700px"
+                          allowFullscreen={true}
+                          showControls={true}
+                        />
+                      </div>
+                    </div>
+                  )}
                   
                   {/* Enhanced Project Sections for Detailed Projects */}
                   {detailedProject && (

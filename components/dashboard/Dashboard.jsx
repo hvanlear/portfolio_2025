@@ -35,6 +35,24 @@ export default function Dashboard({ position = "floating" }) {
     setIsExpanded(!isExpanded);
   };
 
+  // For widget position, show individual components
+  if (position === "widget") {
+    if (widgetType === "time") {
+      return (
+        <div className={`${styles.dashboard} ${styles.widget} ${isVisible ? styles.visible : ''}`}>
+          <TimeCard compact />
+        </div>
+      );
+    }
+    if (widgetType === "weather") {
+      return (
+        <div className={`${styles.dashboard} ${styles.widget} ${isVisible ? styles.visible : ''}`}>
+          <WeatherCard compact />
+        </div>
+      );
+    }
+  }
+
   // For integrated position, show a more compact 4-card layout
   if (position === "integrated") {
     return (

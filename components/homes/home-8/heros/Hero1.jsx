@@ -3,7 +3,8 @@
 import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 import { VFX } from "@vfx-js/core";
-import Dashboard from "@/components/dashboard/Dashboard";
+import TimeCard from "@/components/dashboard/TimeCard";
+import WeatherCard from "@/components/dashboard/WeatherCard";
 
 export default function Hero1() {
 
@@ -44,28 +45,23 @@ export default function Hero1() {
             data-wow-offset={0}
           >
             Hunter{" "}
-            <div 
+            <span
               className="hs-image-3 wow fadeInLeft"
               data-wow-delay="0.8s"
               data-wow-offset={0}
-              style={{ 
-                width: "362px", 
-                height: "208px", 
-                display: "inline-block",
-                position: "relative"
-              }}
             >
-              <Dashboard position="integrated" />
-            </div>
+ 
+            </span>
           </span>
         </h1>
-        <h2
-          className="hs-title-6 font-alt text-center mb-sm-20 wow fadeInUp"
+        <div 
+          className="dashboard-widgets d-flex justify-content-center gap-3 mb-4 wow fadeInUp"
           data-wow-delay="0.6s"
           data-wow-offset={0}
         >
-          Specialized in Branding, Web Design and Photography
-        </h2>
+          <TimeCard compact />
+          <WeatherCard compact />
+        </div>
         <p className="hs-paragraph-2 wow clipRightIn" data-wow-delay="0.8s">
           We are a full-service creative studio creating beautiful digital
           experiences and products. Our mission is to make work process
