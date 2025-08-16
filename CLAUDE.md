@@ -236,3 +236,73 @@ Static content is managed through JavaScript modules in `/data/`:
 - **Professional presentation**: Design case study format with detailed explanations
 - **Visual hierarchy**: Proper heading structure, consistent typography, scannable content
 - **Mobile responsiveness**: Proper stacking, spacing, and touch targets
+
+---
+
+## Component & Page Inventory
+
+### **Active Pages**
+- `/` (Homepage) - `Header8`, `Home8`, `Hero1`, `Footer2`
+- `/about` & `/about-dark` - `Header8`, `Accordion`, `Marquee`, `Testimonials`, `Footer2`
+- `/portfolio` & `/portfolio-dark` - `Header8`, `Portfolio`, `ParallaxContainer`, `Footer2`
+- `/portfolio-single[id]/[id]` - `Header8`, `RelatedProject3`, `ImageModal`, `ClickableImage`, `AnimatedText`, `FigmaEmbed`, `Footer2`
+- `/contact` & `/contact-dark` - `Header8`, `Contact`, `ParallaxContainer`, `Footer2`
+- `/blog` & `/blog-dark` - `Header8`, `Pagination`, `Form5`, `ParallaxContainer`, `Footer2`
+- `/services` & `/services-dark` - `Header8`, `Service`, `ParallaxContainer`, `Footer2`
+
+### **Active Components**
+**Headers:**
+- `Header8` → `Nav` (with nav utilities)
+
+**Home-8 Components:**
+- `Home8` (main container)
+- `Hero1` → `TimeCard`, `WeatherCard`
+- `Service` → uses `services4` data
+- `Portfolio` → uses `portfolios8` data, imports `AnimatedText`
+- `Blog` → uses `blogs8` data
+- `Marquee`
+- `Testimonials` → uses `testimonials3` data
+- `Contact`
+- `Accordion` → uses `faqs3` data
+
+**Common Components:**
+- `ParallaxContainer`
+- `ImageModal`, `ClickableImage`, `AnimatedText`, `FigmaEmbed`
+- `Pagination`
+- `Footer2` → `FooterSocials`
+
+**Dashboard Components:**
+- `TimeCard`, `WeatherCard` (used by Hero1)
+- `Dashboard`, `GitHubCard`, `KanbanCard` (exist but not directly used)
+
+### **Active Data Files**
+- `menu.js` - `modernMultipage`, `modernMultipageDark`
+- `portfolio.js` - `portfolios8`, `allPortfolios`, `detailedProjects`
+- `services.js` - `services4`
+- `blogs.js` - `blogs8`, `blogs12`
+- `testimonials.js` - `testimonials3`
+- `faqs.js` - `faqs3`
+- `footer.js` - `socialLinks`
+
+### **Unused Components (Safe to Delete)**
+**Accordion:** `Accordion1.jsx`, `Accordion2.jsx`
+**Blog:** `Blogs1.jsx`, `Comments.jsx`, `content/Content1.jsx`, `newsletterForms/*` (8 files), `sliders/*` (4 files), `widgets/Widget1-2.jsx`
+**Portfolio:** `Portfolio.jsx`, `Portfolio2-4.jsx`, `PortfolioMassonry2-4.jsx`, `relatedProjects/*` (10 files except `RelatedProject3`), `sliders/Slider1.jsx`
+**Elements:** All 6 files in `/elements/`
+**Gallery:** `Gallery1.jsx`
+**Others:** `Account.jsx`, `ClientSlider.jsx`
+**Common:** `BrandsDark.jsx`, `Faq.jsx`, `Map.jsx`, `ModalVideo.jsx`, `Parallax.jsx`, `TypeWriter.jsx`
+**Heroes:** `Hero2-5.jsx` (only Hero1 used)
+
+### **Unused Data Files (Safe to Delete)**
+- `portfolio.js` - Remove `portfolios1-7`, `portfolios9-13`
+- `blogs.js` - Remove `blogs1-7`, `blogs9-11`, `blogs13-19`
+- `services.js` - Remove `services1-3`, `services5+`
+- `testimonials.js` - Remove `testimonials1-2`, `testimonials4+`
+- `faqs.js` - Remove `faqs1-2`, `faqs4+`
+- **Entire files:** `awards.js`, `brands.js`, `categories.js`, `comments.js`, `contact.js`, `education.js`, `experience.js`, `facts.js`, `features.js`, `gallery.js`, `preview.js`, `pricing.js`, `skills.js`, `steps.js`, `tags.js`, `team.js`, `archeve.js`
+
+### **Cleanup Summary**
+- **Components to remove:** ~50+ files (~67% reduction)
+- **Data exports to remove:** ~80+ arrays (~84% reduction)
+- **Estimated file reduction:** ~200+ files

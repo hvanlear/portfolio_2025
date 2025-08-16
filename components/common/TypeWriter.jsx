@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 // import TypewriterComponent from "typewriter-effect";
 import { TypeAnimation } from "react-type-animation";

@@ -6,6 +6,7 @@ export const modernMultipage = [
   { id: 4, href: "/portfolio", text: "Portfolio" },
   { id: 5, href: "/blog", text: "Blog" },
   { id: 6, href: "/contact", text: "Contact" },
+  { id: 7, href: "/components-demo", text: "Demo" },
 ];
 export const modernMultipageDark = [
   { id: 1, href: "/dark", text: "Home" },
@@ -14,6 +15,7 @@ export const modernMultipageDark = [
   { id: 4, href: "/portfolio-dark", text: "Portfolio" },
   { id: 5, href: "/blog-dark", text: "Blog" },
   { id: 6, href: "/contact-dark", text: "Contact" },
+  { id: 7, href: "/components-demo", text: "Demo" },
 ];
 
 export const modernOnepage = [
@@ -34,6 +36,7 @@ export const menuItems = [
   { href: "/portfolio", text: "Portfolio" },
   { href: "/blog", text: "Blog" },
   { href: "/contact", text: "Contact" },
+  { href: "/components-demo", text: "Demo" },
 ];
 
 export const menuItemsDark = [
@@ -43,4 +46,5 @@ export const menuItemsDark = [
   { href: "/portfolio-dark", text: "Portfolio" },
   { href: "/blog-dark", text: "Blog" },
   { href: "/contact-dark", text: "Contact" },
+  { href: "/components-demo", text: "Demo" },
 ];

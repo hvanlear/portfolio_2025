@@ -30,6 +30,26 @@ export default function WeatherCard({ compact = false }) {
     return weather.icon;
   };
 
+  // Show placeholder during SSR
+  if (!mounted) {
+    return (
+      <div className={`${styles.card} ${compact ? styles.weatherCardCompact : styles.weatherCard}`}>
+        {!compact && (
+          <div className={styles.cardHeader}>
+            <h3>Weather</h3>
+            <span className={styles.location}>Denver, CO</span>
+          </div>
+        )}
+        <div className={styles.weatherIcon}>
+          ⛅
+        </div>
+        <div className={styles.tempDisplay}>
+          --°
+        </div>
+      </div>
+    );
+  }
+
   if (compact) {
     return (
       <div className={`${styles.card} ${styles.weatherCardCompact}`}>

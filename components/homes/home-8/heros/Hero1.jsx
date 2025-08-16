@@ -18,7 +18,7 @@ export default function Hero1() {
   }, []);
  
   return (
-    <div className="container min-height-100vh d-flex align-items-center pt-100 pb-100 pt-sm-120 pb-sm-120 ">
+    <div className="container min-height-100vh d-flex align-items-center pt-100  pt-sm-120 pb-sm-120 ">
       {/* Home Section Content */}
       <div className="home-content pb-sm-60 text-start position-relative">
         <h1 className="hs-title-5 font-alt overflow-hidden mb-30 mb-sm-20">
