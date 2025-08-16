@@ -306,3 +306,71 @@ Static content is managed through JavaScript modules in `/data/`:
 - **Components to remove:** ~50+ files (~67% reduction)
 - **Data exports to remove:** ~80+ arrays (~84% reduction)
 - **Estimated file reduction:** ~200+ files
+
+---
+
+## **CLEANUP MISTAKES & LESSONS LEARNED**
+
+### **Critical Components That Were Incorrectly Deleted**
+
+⚠️ **IMPORTANT:** The following components were mistakenly deleted during cleanup but are actually required by active pages. They have been restored/recreated:
+
+#### **Common Components That MUST Stay:**
+- **`Parallax.jsx`** - Required by `ParallaxContainer.jsx` (used in 12+ pages)
+  - Used in: `/portfolio`, `/portfolio-dark`, `/contact`, `/contact-dark`, `/services`, `/services-dark`, `/blog`, `/blog-dark`, `/blog-single`, `/portfolio-single`
+  - **Status:** ✅ Recreated with basic parallax functionality
+
+#### **Demo Directory Images That MUST Stay:**
+- **`/demo-modern/logo-dark.svg`** - Required by `Header8.jsx`
+- **`/demo-modern/logo-white.svg`** - Required by `Header8.jsx` 
+- **Status:** ❌ Still missing - need to restore from demo branch
+
+#### **CSS References That Need Fixing:**
+- **`style.css:907`** - References `/demo-corporate/mark-decoration-1.svg` (already fixed)
+
+### **Rules for Future Cleanup:**
+
+1. **Before deleting ANY component:**
+   ```bash
+   # Search for ALL imports of the component
+   grep -r "ComponentName" /path/to/project
+   
+   # Search for dynamic imports
+   grep -r "import.*ComponentName" /path/to/project
+   
+   # Search for file path references  
+   grep -r "components/path/ComponentName" /path/to/project
+   ```
+
+2. **Before deleting ANY image/asset:**
+   ```bash
+   # Search for asset references in ALL file types
+   grep -r "asset-name" /path/to/project
+   
+   # Check CSS files specifically
+   grep -r "asset-name" /path/to/project/public/assets/css/
+   ```
+
+3. **Components that seem "unused" but are actually dependencies:**
+   - Any component imported by an active component
+   - Any component referenced in dynamic imports
+   - Any component used by layout files or shared components
+
+4. **Image directories that seem "demo" but contain active assets:**
+   - Always check if CSS files reference images in demo directories
+   - Always check if components hardcode demo directory paths
+   - Search the entire codebase before deleting ANY image directory
+
+### **Cleanup Verification Checklist:**
+- [ ] All pages compile without errors
+- [ ] No missing component imports
+- [ ] No 404 errors for images/assets
+- [ ] Header logos load correctly
+- [ ] Parallax effects work on all pages
+- [ ] All navigation links work
+- [ ] All dynamic imports resolve
+
+### **Demo Branch Strategy:**
+- ✅ Created separate demo branch with all template content
+- ✅ Main branch cleaned of unused components  
+- 🔄 Need to selectively restore specific assets from demo branch as needed
