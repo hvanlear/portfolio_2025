@@ -23,15 +23,15 @@ export default function Header8({ links }) {
       <div className="nav-logo-wrap local-scroll">
         <a href="#top" className="logo">
           <Image
-            src="/assets/images/demo-modern/logo-dark.svg"
-            alt="Your Company Logo"
+            src="/assets/images/logo/logo-dark.svg"
+            alt="Hunter Van Lear Logo"
             width={54}
             height={33}
             className="light-mode-logo"
           />
           <Image
-            src="/assets/images/demo-modern/logo-white.svg"
-            alt="Your Company Logo"
+            src="/assets/images/logo/logo-white.svg"
+            alt="Hunter Van Lear Logo"
             width={54}
             height={33}
             className="dark-mode-logo"

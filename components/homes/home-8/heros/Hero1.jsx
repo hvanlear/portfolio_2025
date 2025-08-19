@@ -85,10 +85,10 @@ export default function Hero1() {
         <div className="full-wrapper text-end">
           <a href="#about" className="scroll-down-2">
             <Image
-              src="/assets/images/demo-modern/arrow-down.svg"
+              src="/assets/images/icons/arrow-down.svg"
               alt="Scroll Down"
-              width={51}
-              height={132}
+              width={50}
+              height={73}
             />
           </a>
         </div>

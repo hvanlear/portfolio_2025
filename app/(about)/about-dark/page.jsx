@@ -85,7 +85,7 @@ export default function ModernAboutPageDark() {
                       <Image
                         width="50"
                         height="73"
-                        src="/assets/images/demo-modern/arrow-down-1-white.svg"
+                        src="/assets/images/icons/arrow-down-white.svg"
                         alt="Scroll Down"
                       />
                     </span>
