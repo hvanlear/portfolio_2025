@@ -1,7 +1,7 @@
 import Pagination from "@/components/common/Pagination";
 import Footer2 from "@/components/footers/Footer2";
 import Header8 from "@/components/headers/Header8";
-import Form5 from "@/components/newsletterForms/Form5";
+import Form5 from "@/components/blog/commentForm/Form5";
 
 import { blogs12 } from "@/data/blogs";
 

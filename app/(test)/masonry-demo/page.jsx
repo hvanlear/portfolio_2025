@@ -4,7 +4,6 @@ import Footer2 from "@/components/footers/Footer2";
 import Header8 from "@/components/headers/Header8";
 import ParallaxContainer from "@/components/common/ParallaxContainer";
 import { modernMultipage } from "@/data/menu";
-import MasonryDemo from "@/components/portfolio/MasonryDemo";
 
 export default function MasonryDemoPage() {
   return (
@@ -39,7 +38,9 @@ export default function MasonryDemoPage() {
             </ParallaxContainer>
 
             <section className="page-section">
-              <MasonryDemo />
+              <div className="container">
+                <p className="text-center">Masonry demo removed - component not needed</p>
+              </div>
             </section>
           </main>
 
